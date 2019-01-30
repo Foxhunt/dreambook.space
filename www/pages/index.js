@@ -6,9 +6,9 @@ const Page = ({ dreams }) =>
     </>
 
 Page.getInitialProps = async ({ req }) => {
-    const res = await fetch("/api/getDreams")
+    const url = req ? `https://${req.headers.host}/api/getDreams` : "/api/getDreams"
+    const res = await fetch(url)
     const dreams = await res.json()
-    console.log(dreams)
     return { dreams }
 }
 
