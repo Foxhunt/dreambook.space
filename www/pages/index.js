@@ -2,7 +2,7 @@ import "isomorphic-unfetch"
 
 const Page = ({ dreams }) =>
     <>
-        {dreams.map(({ text }, i) => <div key={i}>{ text }</div>)}
+        {dreams.map(({ text, _id }) => <div key={_id}>{ text }</div>)}
     </>
 
 Page.getInitialProps = async ({ req }) => {

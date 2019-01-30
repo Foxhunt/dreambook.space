@@ -7,8 +7,7 @@ module.exports = async (req, res) => {
 
     
     const dreams = await col
-                            .aggregate([{ $sample: { size: 1 } }])
-                            .project({ _id: 0 })
+                            .aggregate([{ $sample: { size: 5 } }])
                             .toArray()
 
     res.setHeader('Content-Type', 'application/json')
