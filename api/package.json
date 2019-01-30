@@ -1,5 +1,6 @@
 {
     "dependencies": {
-      "mongo": "../lib/mongo"
+        "micro": "^9.3.3",
+        "mongo": "../lib/mongo"
     }
 }
