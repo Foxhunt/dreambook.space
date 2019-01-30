@@ -8,5 +8,6 @@ module.exports = async (req, res) => {
     const aggregation = col.aggregate([{ $sample: { size: 1 } }])
     const dreams = await aggregation.toArray()
 
-    res.end({ dreams })
+    res.setHeader('Content-Type', 'application/json')
+    res.end(JSON.stringify(dreams))
 }
