@@ -20,5 +20,10 @@
             "x-request-path": "$1"
           }
         }
-    ]
+    ],
+    "env": {
+      "MONGODB_NAME": "@dreambook_mongo_name",
+      "MONGODB_USER": "@dreambook_mongo_user",
+      "MONGODB_PASS": "@dreambook_mongo_pass"
+    }
 }
