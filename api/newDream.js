@@ -7,13 +7,9 @@ module.exports = async (req, res) => {
         const { text } = await json(req)
         const col = db.collection("dreams")
 
-        const insertCount = await col.insertOne({ text })
+        await col.insertOne({ text })
 
-        if (insertCount === 1) {
-            send(res, 200, "Dream was added")   
-        } else {
-            throw new Error("could not insert Dream!")
-        }
+        send(res, 200, "Dream was added")
     } catch(error) {
         console.error(error)
         send(res, 500, "error")
