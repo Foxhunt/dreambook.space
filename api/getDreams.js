@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
     const col = db.collection("dreams")
     
     const dreams = await col
-                            .aggregate([{ $sample: { size: 5 } }])
+                            .aggregate([{ $sample: { size: 10 } }])
                             .toArray()
 
     send(res, 200, dreams)
