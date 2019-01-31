@@ -1,24 +1,30 @@
 import "isomorphic-unfetch"
 
-const handleSubmit = event => {
+const handleSubmit = async event => {
     event.preventDefault()
     const form = new FormData(event.target)
     const text = form.get("dream")
 
-    fetch('/api/newDream', {
+    await fetch('/api/newDream', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ text }),
     })
+
+    event.target.reset()
 }
 
 const Page = ({ dreams }) =>
     <>
         {dreams.map(({ text, _id }) => <div key={_id}>{ text }</div>)}
         <form onSubmit={ handleSubmit }>
-            <input name="dream" type="text" />
+            <input
+                name="dream"
+                type="text"
+                placeholder="share your Dream"
+                autocomplete="off" />
         </form>
     </>
 
