@@ -4,9 +4,9 @@ const { json, send } = require("micro")
 module.exports = async (req, res) => {
     try {
         const db = await mongo()
-        const text = await json(req)
+        const { text } = await json(req)
         const col = db.collection("dreams")
-        
+
         const insertCount = await col.insertOne({ text })
 
         if (insertCount === 1) {

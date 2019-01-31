@@ -7,7 +7,10 @@ const handleSubmit = event => {
 
     fetch('/api/newDream', {
         method: 'POST',
-        body: { text },
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ text }),
     })
 }
 
