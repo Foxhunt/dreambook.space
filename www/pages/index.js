@@ -21,6 +21,7 @@ const Page = ({ dreams }) =>
             <input
                 name="dream"
                 type="text"
+                required
                 placeholder="share your Dream"
                 autocomplete="off" />
         </form>
