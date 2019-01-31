@@ -1,18 +1,16 @@
 import "isomorphic-unfetch"
 
-const handleSubmit = async event => {
+const handleSubmit = event => {
     event.preventDefault()
     const form = new FormData(event.target)
     const text = form.get("dream")
-
-    await fetch('/api/newDream', {
+    fetch('/api/newDream', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ text }),
     })
-
     event.target.reset()
 }
 
