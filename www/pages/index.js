@@ -1,4 +1,5 @@
 import "isomorphic-unfetch"
+import useState from "react"
 
 const handleSubmit = event => {
     event.preventDefault()
@@ -14,8 +15,10 @@ const handleSubmit = event => {
     event.target.reset()
 }
 
-const Page = ({ dreams }) =>
-    <>
+const Page = props => {
+    const [dreams, setDreams] = useState(props.dreams)
+
+    return <>
         {dreams.map(({ text, _id }) => <div key={_id}>{ text }</div>)}
         <form onSubmit={ handleSubmit }>
             <input
@@ -25,7 +28,16 @@ const Page = ({ dreams }) =>
                 placeholder="share your Dream"
                 autoComplete="off" />
         </form>
+        <button 
+            onClick={async () => {
+                const res = await fetch("/api/getDreams")
+                const dreams = await res.json()
+                setDreams(dreams)
+        }}>
+            refresh
+        </button>
     </>
+}
 
 Page.getInitialProps = async ({ req }) => {
     const url = req ? `https://${req.headers.host}/api/getDreams` : "/api/getDreams"
