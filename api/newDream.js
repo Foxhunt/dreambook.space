@@ -4,10 +4,13 @@ const { json, send } = require("micro")
 module.exports = async (req, res) => {
     try {
         const db = await mongo()
-        const { text } = await json(req)
+        let { text } = await json(req)
 
+        let text = text.trim()
+
+        // prevent empty strings
         if (text === "") {
-            throw new Error("No Dream was submitted.")
+            throw new Error("The submitted Dream was empty.")
         } else {
             const col = db.collection("dreams")
 

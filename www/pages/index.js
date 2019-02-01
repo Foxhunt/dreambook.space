@@ -3,7 +3,7 @@ import "isomorphic-unfetch"
 const handleSubmit = event => {
     event.preventDefault()
     const form = new FormData(event.target)
-    const text = form.get("dream")
+    const text = form.get("dream").trim()
     fetch('/api/newDream', {
         method: 'POST',
         headers: {
