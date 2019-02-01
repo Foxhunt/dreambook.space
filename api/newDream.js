@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
         const db = await mongo()
         let { text } = await json(req)
 
-        let text = text.trim()
+        text = text.trim()
 
         // prevent empty strings
         if (text === "") {
