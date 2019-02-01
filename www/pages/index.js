@@ -23,7 +23,7 @@ const Page = ({ dreams }) =>
                 type="text"
                 required
                 placeholder="share your Dream"
-                autocomplete="off" />
+                autoComplete="off" />
         </form>
     </>
 
