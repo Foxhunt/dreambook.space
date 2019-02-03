@@ -1,6 +1,9 @@
 import "isomorphic-unfetch"
 import React, { useState } from "react"
 
+import DreamSVG from "../assets/svg/Dream.svg"
+import CloudSVG from "../assets/svg/Cloud.svg"
+
 const handleSubmit = event => {
     event.preventDefault()
     const form = new FormData(event.target)
@@ -36,6 +39,8 @@ const Page = props => {
         }}>
             refresh
         </button>
+        <DreamSVG />
+        <CloudSVG />
     </>
 }
 
