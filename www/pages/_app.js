@@ -14,6 +14,10 @@ const GlobalStyle = createGlobalStyle`
 
     overflow: hidden;
   }
+
+  div#__next {
+    will-change: transform;
+  }
 `
 
 class MyApp extends App {

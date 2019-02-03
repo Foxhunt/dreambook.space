@@ -13,8 +13,6 @@ const Dream = styled(DreamSVG).attrs(({x, y}) => ({
     transform: translate(-50%);
     transition: left cubic-bezier(0.46, 0.03, 0.52, 0.96) 10s,
                 top cubic-bezier(0.46, 0.03, 0.52, 0.96) 10s;
-
-    will-change: transform;
 `
 
 export default ({ onClick }) => {

@@ -10,6 +10,8 @@ const DreamInput = styled.form`
     width: 100%;
     height: 100%;
 
+    background-color: rgba(0, 0, 0, 0.25);
+
     > input {
         position: absolute;
         transform: translate(-50%);
