@@ -11,8 +11,8 @@ const Dream = styled(DreamSVG).attrs(({x, y}) => ({
 }))`
     position: absolute;
     transform: translate(-50%);
-    transition: left cubic-bezier(0.46, 0.03, 0.52, 0.96) 4s,
-                top cubic-bezier(0.46, 0.03, 0.52, 0.96) 4s;
+    transition: left cubic-bezier(0.46, 0.03, 0.52, 0.96) 10s,
+                top cubic-bezier(0.46, 0.03, 0.52, 0.96) 10s;
 
     will-change: transform;
 `
@@ -22,12 +22,11 @@ export default ({ onClick }) => {
     useEffect(() => {
         const intervall = setInterval(() => {
             setPosition([Math.random(), Math.random()])
-        }, 4000)
+        }, 1000 * 10)
         return () => {
             clearInterval(intervall)
         }
     })
-
 
     return <Dream
         x={x}
