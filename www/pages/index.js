@@ -2,28 +2,16 @@ import "isomorphic-unfetch"
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 
+import CloudSVG from "../assets/svg/Cloud.svg"
+
 import Dreams from "../components/Dreams"
 import DreamInput from "../components/DreamInput"
-
-import CloudSVG from "../assets/svg/Cloud.svg"
+import SelectedDream from "../components/SelectedDream"
 
 const Cloud = styled(CloudSVG)`
     position: absolute;
     right: 64px;
     bottom: 64px;
-`
-
-const SelectedDream = styled.div`
-    position: absolute;
-
-    top: 0px;
-    left: 0px;
-
-    width: 100%;
-    height: 100%;
-
-    color: white;
-    text-align: center;
 `
 
 const Page = props => {
