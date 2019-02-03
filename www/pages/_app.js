@@ -10,7 +10,9 @@ const GlobalStyle = createGlobalStyle`
     height: 100%;
     width: 100%;
 
-    background: #002241;
+    background: linear-gradient(164.54deg, #000000 0%, #23384B 36.65%, #365674 94.76%);
+
+    overflow: hidden;
   }
 `
 
