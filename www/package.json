@@ -14,5 +14,8 @@
   "scripts": {
     "now-build": "next build",
     "dev": "next"
+  },
+  "devDependencies": {
+    "terser": "^3.14.1"
   }
 }
