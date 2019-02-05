@@ -34,6 +34,8 @@ const DreamInput = styled.form`
 
         text-align: center;
         background-color: rgb(225, 225, 225);
+        
+        outline: none;
     }
 `
 

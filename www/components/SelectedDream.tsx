@@ -18,14 +18,31 @@ const SelectedDream = styled.div`
     background-color: rgba(0, 0, 0, 0.25);
 `
 
+const Bubble = styled.div`
+    width: 274px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    background-color: rgb(225, 225, 225);
+    border-radius: 46px;
+`
+
 const Text = styled.div`
-    color: white;
+    max-width: 80%;
+    text-align: center;
+    overflow-wrap: break-word;
+    text-size-adjust: auto;
 `
 
 export default ({ children, unSelectDream }: Props) =>
     <SelectedDream
         onClick={unSelectDream}>
-        <Text>
-            { children }
-        </Text>
+        <Bubble>
+            <Text>
+                { children }
+            </Text>
+        </Bubble>
     </SelectedDream>
