@@ -18,7 +18,7 @@ const Dream = styled(DreamSVG).attrs(({x, y, delay}) => ({
 }))`
     position: absolute;
     transform: translate(-50%);
-    mix-blend-mode: overlay;
+    mix-blend-mode: screen;
 `
 
 export default ({ selectDream }: Props) => {
