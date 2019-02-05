@@ -6,12 +6,12 @@
     "version": 2,
     "builds": [
         { "src": "www/package.json", "use": "@now/next" },
-        { "src": "api/*.js", "use": "@now/node@canary" }
+        { "src": "api/*.ts", "use": "@now/node@canary" }
     ],
     "routes": [
         {
           "src": "/api/(.*)",
-          "dest": "/api/$1.js"
+          "dest": "/api/$1.ts"
         },
         {
           "src": "/(.*)",
