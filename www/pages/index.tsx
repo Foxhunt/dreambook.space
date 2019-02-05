@@ -15,7 +15,7 @@ type dream = {
 }
 
 type Props = {
-    dreams: [dream]
+    dreams: dream[]
 }
 
 const Cloud = styled(CloudSVG)`
