@@ -3,6 +3,10 @@ import styled from "styled-components"
 
 import DreamSVG from "../assets/svg/Dream.svg"
 
+type Props = {
+    selectDream: () => void
+}
+
 const Dream = styled(DreamSVG).attrs(({x, y, delay}) => ({
     style: {
         left: `${10 + 80 * x}%`,
@@ -14,9 +18,10 @@ const Dream = styled(DreamSVG).attrs(({x, y, delay}) => ({
 }))`
     position: absolute;
     transform: translate(-50%);
+    mix-blend-mode: overlay;
 `
 
-export default ({ onClick }) => {
+export default ({ selectDream }: Props) => {
     const [[x, y], setPosition] = useState([Math.random(), Math.random()])
     const [delay, setDelay] = useState(1000 * (5 + 5 * Math.random()))
 
@@ -32,6 +37,6 @@ export default ({ onClick }) => {
         x={x}
         y={y}
         delay={delay}
-        onClick={onClick}
+        onClick={selectDream}
     />
 }

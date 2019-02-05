@@ -1,5 +1,6 @@
 import "isomorphic-unfetch"
-import React, { useState, useEffect } from "react"
+import { NextContext } from "next"
+import React, { useState } from "react"
 import styled from "styled-components"
 
 import CloudSVG from "../assets/svg/Cloud.svg"
@@ -8,16 +9,25 @@ import Dreams from "../components/Dreams"
 import DreamInput from "../components/DreamInput"
 import SelectedDream from "../components/SelectedDream"
 
+type dream = {
+    _id: number
+    text: string
+}
+
+type Props = {
+    dreams: [dream]
+}
+
 const Cloud = styled(CloudSVG)`
     position: absolute;
     right: 64px;
     bottom: 64px;
 `
 
-const Page = props => {
-    const [dreams, setDreams] = useState(new Map(props.dreams.map(({_id, text}) => [_id, text])))
+const Page = (props: Props) => {
+    const [dreams] = useState(new Map(props.dreams.map<[number,string]>(({_id, text}) => [_id, text])))
     const [dreamText, setDreamText] = useState("")
-    const [selectedDream, setSelectedDream] = useState(null)
+    const [selectedDream, setSelectedDream] = useState<string | undefined>(undefined)
     const [showDreamInput, setShowDreamInput] = useState(false)
 
     return <>
@@ -30,8 +40,10 @@ const Page = props => {
             showDreamInput && <DreamInput
                 dreamText={ dreamText }
                 setDreamText={ setDreamText }
-                onClick={ () => { setShowDreamInput(false) } }
-                onSubmit={(event) => {
+                hideDreamInput={ () => {
+                    setShowDreamInput(false)
+                }}
+                onSubmit={event => {
                     event.preventDefault()
                     shareDream(dreamText)
                     setDreamText("")
@@ -41,14 +53,17 @@ const Page = props => {
         }
         {
             selectedDream && <SelectedDream
-                onClick={() => setSelectedDream(null)}>
+                unSelectDream={() => {
+                    setSelectedDream(undefined)
+                }}
+            >
                 { selectedDream }
             </SelectedDream>
         }
     </>
 }
 
-Page.getInitialProps = async ({ req }) => {
+Page.getInitialProps = async ({ req }: NextContext) => {
     const url = req ? `https://${req.headers.host}/api/getDreams` : "/api/getDreams"
     const res = await fetch(url)
     const dreams = await res.json()
@@ -56,7 +71,7 @@ Page.getInitialProps = async ({ req }) => {
     return { dreams }
 }
 
-function shareDream(dream) {
+function shareDream(dream: string) {
     const text = dream.trim()
     fetch('/api/newDream', {
         method: 'POST',
