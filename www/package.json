@@ -3,9 +3,11 @@
   "license": "MIT",
   "scripts": {
     "now-build": "next build",
-    "dev": "next"
+    "dev": "next",
+    "typeCheck": "tsc"
   },
   "dependencies": {
+    "@zeit/next-typescript": "^1.1.1",
     "babel-plugin-inline-react-svg": "^1.0.1",
     "babel-plugin-styled-components": "^1.10.0",
     "encoding": "^0.1.12",
@@ -13,6 +15,10 @@
     "next": "^8.0.0-canary.18",
     "react": "^16.8.0-alpha.1",
     "react-dom": "^16.8.0-alpha.1",
-    "styled-components": "^4.1.3"
+    "styled-components": "^4.1.3",
+    "typescript": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/styled-components": "^4.1.8"
   }
 }
