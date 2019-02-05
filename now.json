@@ -6,7 +6,7 @@
     "version": 2,
     "builds": [
         { "src": "www/package.json", "use": "@now/next" },
-        { "src": "api/*.js", "use": "@now/node" }
+        { "src": "api/*.js", "use": "@now/node@canary" }
     ],
     "routes": [
         {

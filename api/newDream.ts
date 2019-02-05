@@ -1,10 +1,11 @@
-const mongo = require("mongo")
-const { json, send } = require("micro")
+import { IncomingMessage, ServerResponse } from "http"
+import mongo = require("mongo")
+import { json, send } from "micro"
 
-module.exports = async (req, res) => {
+export default async (req: IncomingMessage, res: ServerResponse) => {
     try {
         const db = await mongo()
-        let { text } = await json(req)
+        let { text } = (await json(req)) as { text: string }
 
         text = text.trim()
 

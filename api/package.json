@@ -2,5 +2,9 @@
     "dependencies": {
         "micro": "^9.3.3",
         "mongo": "../lib/mongo"
+    },
+    "devDependencies": {
+        "@types/micro": "^7.3.3",
+        "typescript": "^3.3.1"
     }
 }
