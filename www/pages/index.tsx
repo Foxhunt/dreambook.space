@@ -24,9 +24,13 @@ const Cloud = styled(CloudSVG)`
     bottom: 64px;
 `
 
+const { floor, random } = Math
+
+const dreamPrePhrases = ["Last night i dreamed ", "I wish i ", "If only i could "]
+
 const Page = (props: Props) => {
     const [dreams] = useState(new Map(props.dreams.map<[number,string]>(({_id, text}) => [_id, text])))
-    const [dreamText, setDreamText] = useState("")
+    const [dreamText, setDreamText] = useState(dreamPrePhrases[floor(dreamPrePhrases.length * random())])
     const [selectedDream, setSelectedDream] = useState<string | undefined>(undefined)
     const [showDreamInput, setShowDreamInput] = useState(false)
 

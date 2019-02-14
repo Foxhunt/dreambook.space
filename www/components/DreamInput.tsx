@@ -39,17 +39,17 @@ const DreamInput = styled.form`
     }
 `
 
-export default ({onSubmit, hideDreamInput, dreamText, setDreamText}: Props) =>
+export default ({ onSubmit, hideDreamInput, dreamText, setDreamText }: Props) =>
     <DreamInput
         onSubmit={onSubmit}
         onClick={hideDreamInput} >
         <input
-            onChange={ event => setDreamText(event.target.value) }
-            onClick={ event => event.stopPropagation() }
-            value={ dreamText }
+            onChange={event => setDreamText(event.target.value)}
+            onClick={event => event.stopPropagation()}
+            value={dreamText}
             name="dream"
             type="text"
             required
-            placeholder="share your Dream"
+            placeholder="Share your dreams..."
             autoComplete="off" />
     </DreamInput>
