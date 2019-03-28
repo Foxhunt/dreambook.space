@@ -1,6 +1,6 @@
-import "isomorphic-unfetch"
+import fetch from "isomorphic-unfetch"
 import { NextContext } from "next"
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 
 import CloudSVG from "../assets/svg/Cloud.svg"
@@ -26,13 +26,19 @@ const Cloud = styled(CloudSVG)`
 
 const { floor, random } = Math
 
-const dreamPrePhrases = ["Last night i dreamed ", "I wish i ", "If only i could "]
+const dreamPrePhrases = ["Last night i dreamed ", "I wish i ", "If only i could ", "I dream of "]
 
 const Page = (props: Props) => {
     const [dreams] = useState(new Map(props.dreams.map<[number,string]>(({_id, text}) => [_id, text])))
     const [dreamText, setDreamText] = useState(dreamPrePhrases[floor(dreamPrePhrases.length * random())])
     const [selectedDream, setSelectedDream] = useState<string | undefined>(undefined)
     const [showDreamInput, setShowDreamInput] = useState(false)
+
+    useEffect(() => {
+        if(dreamPrePhrases.includes(dreamText)){
+            setDreamText(dreamPrePhrases[floor(dreamPrePhrases.length * random())])
+        }
+    }, [showDreamInput])
 
     return <>
         <Dreams 
