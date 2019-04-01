@@ -7,7 +7,7 @@
     "regions": ["all"],
     "builds": [
         { "src": "www/package.json", "use": "@now/next" },
-        { "src": "api/*.ts", "use": "@now/node" }
+        { "src": "api/*.ts", "use": "@now/node@0.5.1" }
     ],
     "routes": [
         {
