@@ -15,5 +15,6 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
         send(res, 200, dreams)
     } catch (error) {
         console.error(error)
+        send(res, 500, "Sorry i was not able to get any Dreams.")
     }
 }
