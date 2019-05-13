@@ -74,7 +74,7 @@ const Page = (props: Props) => {
 }
 
 Page.getInitialProps = async ({ req }: NextContext) => {
-    const url = req ? `https://${req.headers["x-now-deployment-url"]}api/getDreams` : "/api/getDreams"
+    const url = req ? `https://${req.headers.host}/api/getDreams` : "/api/getDreams"
     const res = await fetch(url)
     const dreams = await res.json()
 
