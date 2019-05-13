@@ -29,28 +29,28 @@ const { floor, random } = Math
 const dreamPrePhrases = ["Last night i dreamed ", "I wish i ", "If only i could ", "I dream of "]
 
 const Page = (props: Props) => {
-    const [dreams] = useState(new Map(props.dreams.map<[number,string]>(({_id, text}) => [_id, text])))
+    const [dreams] = useState(new Map(props.dreams.map<[number, string]>(({ _id, text }) => [_id, text])))
     const [dreamText, setDreamText] = useState(dreamPrePhrases[floor(dreamPrePhrases.length * random())])
     const [selectedDream, setSelectedDream] = useState<string | undefined>(undefined)
     const [showDreamInput, setShowDreamInput] = useState(false)
 
     useEffect(() => {
-        if(dreamPrePhrases.includes(dreamText)){
+        if (dreamPrePhrases.includes(dreamText)) {
             setDreamText(dreamPrePhrases[floor(dreamPrePhrases.length * random())])
         }
     }, [showDreamInput])
 
     return <>
-        <Dreams 
+        <Dreams
             dreams={Array.from(dreams.keys())}
-            selectDream={id => setSelectedDream(dreams.get(id))}/>
+            selectDream={id => setSelectedDream(dreams.get(id))} />
         <Cloud
-            onClick={ () => setShowDreamInput(true) } />
+            onClick={() => setShowDreamInput(true)} />
         {
             showDreamInput && <DreamInput
-                dreamText={ dreamText }
-                setDreamText={ setDreamText }
-                hideDreamInput={ () => {
+                dreamText={dreamText}
+                setDreamText={setDreamText}
+                hideDreamInput={() => {
                     setShowDreamInput(false)
                 }}
                 onSubmit={event => {
@@ -67,14 +67,14 @@ const Page = (props: Props) => {
                     setSelectedDream(undefined)
                 }}
             >
-                { selectedDream }
+                {selectedDream}
             </SelectedDream>
         }
     </>
 }
 
 Page.getInitialProps = async ({ req }: NextContext) => {
-    const url = req ? `${req.headers.referer}api/getDreams` : "/api/getDreams"
+    const url = req ? `https://${req.headers["x-now-deployment-url"]}api/getDreams` : "/api/getDreams"
     const res = await fetch(url)
     const dreams = await res.json()
 
