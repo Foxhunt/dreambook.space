@@ -4,7 +4,6 @@
       "dreambook.space"
     ],
     "version": 2,
-    "regions": ["all"],
     "builds": [
         { "src": "www/package.json", "use": "@now/next" },
         { "src": "api/*.ts", "use": "@now/node" }
